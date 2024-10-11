@@ -31,6 +31,10 @@ else
 	MAC_GO_ARCH := amd64
 endif
 
+ifeq ($(shell uname -m), aarch64)
+	GOARCH := aarch64
+endif
+
 all: webapp server ## Build server and webapp.
 
 prebuild: ## Run prebuild actions (install dependencies etc.).
