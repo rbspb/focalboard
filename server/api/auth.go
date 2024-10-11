@@ -212,18 +212,19 @@ func (a *API) handleRegister(w http.ResponseWriter, r *http.Request) {
 			a.errorResponse(w, r, model.NewErrUnauthorized("invalid token"))
 			return
 		}
-	} else {
+	} /*else {
 		// No signup token, check if no active users
 		userCount, err2 := a.app.GetRegisteredUserCount()
 		if err2 != nil {
 			a.errorResponse(w, r, err2)
 			return
 		}
+
 		if userCount > 0 {
 			a.errorResponse(w, r, model.NewErrUnauthorized("no sign-up token and user(s) already exist"))
 			return
 		}
-	}
+	}*/
 
 	if err = registerData.IsValid(); err != nil {
 		a.errorResponse(w, r, err)
