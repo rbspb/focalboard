@@ -3,11 +3,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider as ReduxProvider} from 'react-redux'
-import {store as emojiMartStore} from 'emoji-mart'
+
+import {Store as emojiMartStore} from 'emoji-mart'
 
 import App from './app'
 import {initThemes} from './theme'
 import {importNativeAppSettings} from './nativeApp'
+
 import {UserSettings} from './userSettings'
 
 import {IUser} from './user'
@@ -24,7 +26,9 @@ import './styles/_markdown.scss'
 import store from './store'
 import WithWebSockets from './components/withWebSockets'
 
-emojiMartStore.setHandlers({getter: UserSettings.getEmojiMartSetting, setter: UserSettings.setEmojiMartSetting})
+emojiMartStore.get = UserSettings.getEmojiMartSetting
+emojiMartStore.set = UserSettings.setEmojiMartSetting
+
 importNativeAppSettings()
 
 initThemes()
